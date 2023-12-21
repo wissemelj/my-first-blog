@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project_name }} - Home</title>
+    <style>
+        /* Updated styling for a modern look */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #4285f4; /* Google Blue */
+            font-family: 'Roboto', sans-serif; /* Set font to 'Roboto' */
+            margin-top: 20px; /* Adjusted margin */
+        }
+        p {
+            color: #555;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .important-info {
+            color: #1a73e8; /* Google Blue */
+            font-size: 1.5em;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .loading-circle {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #4285f4; /* Google Blue */
+            animation: spin 1s linear infinite;
+            margin-right: 5px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        button {
+            background-color: #4285f4; /* Google Blue */
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin: 20px 10px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #1c4ed9; /* Slightly Darker Blue on Hover */
+        }
+        .contact {
+            margin-top: 40px;
+            color: #555;
+            font-size: 1.1em;
+        }
+        /* Added styling for the home and about buttons */
+        .home-button, .about-button {
+            position: absolute;
+            top: 10px;
+            background-color: #4285f4; /* Google Blue */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+        }
+        .home-button { left: 10px; }
+        .about-button { right: 10px; }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"> <!-- Added 'Roboto' font link -->
+</head>
+<body>
+    <a href="{% url 'home' %}" class="home-button">Home</a>
+    <a href="{% url 'about_us' %}" class="about-button">About Us</a>
+    <h1>Welcome to {{ project_name }} Platform</h1>
+    <p>Explore the features of our Fire Monitoring Platform and stay informed about environmental conditions.</p> <!-- Added instructions -->
+    <div class="important-info">
+        <p>Discover the importance of using our platform for efficient fire monitoring and protection.</p>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <label for="state_select">Location</label>
+                    <select id="state_select">
+                        <option value="none">Choose a state</option>
+                        <option value="Ariana">Ariana</option>
+                        <option value="Beja">Beja</option>
+                        <option value="Ben Arous">Ben Arous</option>
+                        <option value="Bizerte">Bizerte</option>
+                        <option value="Gabes">Gabes</option>
+                        <option value="Gafsa">Gafsa</option>
+                        <option value="Jendouba">Jendouba</option>
+                        <option value="Kairouan">Kairouan</option>
+                        <option value="Kasserine">Kasserine</option>
+                        <option value="Kebili">Kebili</option>
+                        <option value="Kef">Kef</option>
+                        <option value="Mahdia">Mahdia</option>
+                        <option value="Manouba">Manouba</option>
+                        <option value="Medenine">Medenine</option>
+                        <option value="Monastir">Monastir</option>
+                        <option value="Nabeul">Nabeul</option>
+                        <option value="Sfax">Sfax</option>
+                        <option value="Sidi Bouzid">Sidi Bouzid</option>
+                        <option value="Siliana">Siliana</option>
+                        <option value="Sousse">Sousse</option>
+                        <option value="Tataouine">Tataouine</option>
+                        <option value="Tozeur">Tozeur</option>
+                        <option value="Tunis">Tunis</option>
+                        <option value="Zaghouan">Zaghouan</option>
+                    </select>
+                </th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>Fire Existence</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in monitoring_data %}
+                <tr>
+                    <!-- ... (rest of the table content) ... -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button onclick="window.location.href='{% url 'login' %}'">Login</button>
+    <p class="contact">Contact us: +21652800458</p>
+</body>
+</html>

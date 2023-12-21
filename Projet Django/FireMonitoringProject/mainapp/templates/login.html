@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project_name }} - Login</title>
+    <style>
+        /* Updated styling for a modern look */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #4285f4; /* Google Blue */
+            margin-bottom: 10px; /* Adjusted margin */
+        }
+        form {
+            width: 80%; /* Adjusted width */
+            max-width: 400px; /* Added max-width for responsiveness */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Centered text within the form */
+        }
+        label {
+            display: block;
+            margin: 15px 0 8px; /* Adjusted margin */
+            font-weight: bold;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4285f4; /* Google Blue */
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #1c4ed9; /* Slightly Darker Blue on Hover */
+        }
+        /* Added styling for the home button */
+        .home-button {
+            position: absolute;
+            top: 10px;
+            left: 10px; /* Adjusted to the left */
+            background-color: #4285f4; /* Google Blue */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+        }
+        /* Adjusted margin for the form container */
+        form {
+            margin-top: -50px;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'home' %}" class="home-button">Home</a>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <h1>Login</h1>
+        <p>Enter your credentials below to log in.</p> <!-- Added instructions -->
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" id="id_username" required>
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" id="id_password" required>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
